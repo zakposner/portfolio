@@ -1,0 +1,197 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Imports
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+@import './vendor/bootstrap/functions';
+@import './vendor/bootstrap/variables';
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Variables & Mixins
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+// -=-=- Breakpoints -=-=-
+$desktop                                    : 'min-width: 1001px';
+$mobile                                     : 'max-width: 1000px';
+$tablet-min                                 : 'min-width: 691px';
+$phone                                      : 'max-width: 491px';
+
+// -=-=- Animations -=-=-
+@mixin transition-primary($prop: all) {
+    transition: $prop .3s ease-in-out; 
+}
+
+// -=-=- Spacing -=-=-
+$container-spacing                          : 3rem;
+
+// -=-=- Z-Index -=-=-
+$z-index-sidebar                            : 9999;
+
+// -=-=- Sidebar -=-=-
+$sidebar-width                              : 300px;
+$sidebar-padding                            : 20px;
+$sidebar-background                         : #343a40;
+$sidebar-color                              : $white;
+
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  General
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+body { 
+    background-color: $body-bg; 
+
+    // Scrollbar
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: rgba(0,0,0,0);
+        -webkit-border-radius: 100px;
+    }
+    &::-webkit-scrollbar:hover {
+        background-color: rgba(0, 0, 0, 0.09);
+    }
+    &::-webkit-scrollbar-thumb:vertical {
+        background: rgba(0,0,0,0.5);
+        -webkit-border-radius: 100px;
+    }
+    &::-webkit-scrollbar-thumb:vertical:active {
+        background: rgba(0,0,0,0.61);
+        -webkit-border-radius: 100px;
+    }
+}
+
+.content-wrap { padding-top: $container-spacing; }
+
+// -=-=- Card Animations -=-=-
+
+.card-enter {
+    opacity: 0.01;
+}
+
+.card-enter.card-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.card-leave {
+    opacity: 1;
+}
+
+.card-leave.card-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Sidebar
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+.sidebar {
+    width: $sidebar-width;
+    padding: $sidebar-padding;
+    height: 100%;
+    position: fixed;
+    z-index: $z-index-sidebar;
+    background: $sidebar-background;
+
+    transform: translateX(-$sidebar-width);
+    @include transition-primary(transform);
+}
+
+.sidebar--open { transform: none; }
+
+.logo { 
+    text-align: center;
+    padding: 40px 0;
+
+    img {
+        width:200px;
+        border-radius: 50%;
+    }
+}
+
+.sidebar .menu {
+    padding-left: 0;
+
+    a { text-decoration: none; }
+
+    .menu-item {
+        list-style: none;
+        color: $white;
+        text-align: center;
+        font-variant: small-caps;
+        font-size: 1.5rem;
+
+        &--active { color: $primary; }
+    }
+}
+
+@media screen and ($desktop) {
+    .sidebar--open + .content-wrap {
+        margin-left: $sidebar-width;
+    }
+    .sidebar-toggle { display: none; }
+}
+
+@media screen and ($mobile) {
+    .sidebar-toggle {
+        position: absolute;
+        top: 20px;
+        left: 100%;
+    }
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Portfolio
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  About
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Skills
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+.filters {
+    justify-content: flex-end;
+    margin-bottom: $container-spacing * 2/3;
+}
+
+.filter {
+    font-weight: $font-weight-bold;
+    font-size: 1.25rem;
+    font-variant: small-caps;
+
+    .pretty input:checked~.state.p-success label:after, 
+    .pretty.p-toggle .state.p-success label:after { background-color: $primary !important; }
+
+    label span {
+        position: relative;
+        bottom: 2px;
+    }
+}
+
+.skill {
+    text-align: center;
+
+    .card {
+        transition:  0.3s ease;
+
+        // shadow-sm --> shadow-lg on hover
+        &.shadow-sm:hover { box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important; }
+    }
+
+    span.devicons {
+        display: inline-block;
+        font-size: 3rem;
+        margin: 1rem 0;
+        color: $primary;
+    }
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Experience
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
