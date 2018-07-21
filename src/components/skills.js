@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
-
 import SkillCard from './skill-card';
+import skillsList from '../../assets/data/skills';
 
-import skillsList from '../assets/skills';
 const skillsFilters = ['Languages', 'Libraries', 'Tools', 'Platforms'];
-
 
 export default class Skills extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            filters: []
-        };
+        this.state = { filters: [] };
 
         this.renderSkills = this.renderSkills.bind(this);
         this.renderFilters = this.renderFilters.bind(this);
@@ -80,6 +76,8 @@ export default class Skills extends Component {
                 <ReactCSSTransitionGroup
                     className="row skills"
                     transitionName="card"
+                    transitionAppear={true}                    
+                    transitionAppearTimeout={300}
                     transitionEnterTimeout={300}
                     transitionLeaveTimeout={300}>
                         { this.renderSkills() }

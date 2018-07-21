@@ -120,7 +120,9 @@ $enable-print-styles:       true !default;
 
 // stylelint-disable
 $spacer: 1rem !default;
-$spacers: () !default;
+$spacers: (
+  c: 3rem
+) !default;
 $spacers: map-merge((
   0: 0,
   1: ($spacer * .25),

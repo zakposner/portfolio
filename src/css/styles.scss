@@ -48,6 +48,7 @@ body {
     }
     &::-webkit-scrollbar:hover {
         background-color: rgba(0, 0, 0, 0.09);
+        width: 10px;
     }
     &::-webkit-scrollbar-thumb:vertical {
         background: rgba(0,0,0,0.5);
@@ -195,3 +196,43 @@ body {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Experience
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+.gig {
+
+    h2 { font-variant: small-caps; }
+
+    h5 { font-weight: 300; }
+
+    &.current .gig__end { color: $primary; }
+}
+
+.gig__dates {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-bold;
+
+    @media screen and ($mobile) {
+        height: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+    }
+}
+
+.gig__company,
+.gig__logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.gig__logo {
+    height: 2rem;
+    width: auto;
+    margin-right: 1rem;
+}
+
