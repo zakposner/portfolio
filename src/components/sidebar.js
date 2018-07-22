@@ -5,7 +5,8 @@ const menuItems = [
     { 'name': 'Portfolio',  'href': '/portfolio' },
     { 'name': 'About',      'href': '/about' },   
     { 'name': 'Skills',     'href': '/skills' },
-    { 'name': 'Experience', 'href': '/experience' }
+    { 'name': 'Experience', 'href': '/experience' },
+    { 'name': 'Contact',    'href': '/contact' }
 ];
 
 export default class Sidebar extends Component {

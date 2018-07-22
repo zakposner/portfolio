@@ -1,5 +1,6 @@
 const gigs = [
     {
+        id: 0,
         start: 'Jul 2017',
         end: 'Current',
         company: 'ONYX Design',
@@ -15,6 +16,7 @@ const gigs = [
         tags: []
     },
     {
+        id: 1,
         start: 'May 2017',
         end: 'Current',
         company: 'LivHOME',
@@ -31,6 +33,7 @@ const gigs = [
         tags: []
     },
     {
+        id: 2,
         start: 'Jun 2015',
         end: 'May 2017',
         company: 'Kindling Social',
@@ -45,6 +48,7 @@ const gigs = [
         tags: []
     },
     {
+        id: 3,
         start: 'Jan 2016',
         end: 'Dec 2016',
         company: 'Coastline Imports',
@@ -64,6 +68,7 @@ const gigs = [
         tags: []
     },
     {
+        id: 4,
         start: 'Aug 2014',
         end: 'Dec 2015',
         company: 'ImportLA',
@@ -84,6 +89,7 @@ const gigs = [
         tags: []
     },
     {
+        id: 5,
         start: 'Sep 2011',
         end: 'Jun 2014',
         company: 'UC San Diego',

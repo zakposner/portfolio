@@ -7,12 +7,14 @@ import promise from 'redux-promise';
 
 
 // Components
-import Sidebar from './components/sidebar';
 import About from './components/about';
+import Contact from './components/contact';
+import Experience from './components/experience';
 import PortfolioIndex from './components/portfolio-index';
 import PortfolioItem from './components/portfolio-item';
+import Sidebar from './components/sidebar';
 import Skills from './components/skills';
-import Experience from './components/experience';
+
 
 
 // Redux
@@ -31,6 +33,7 @@ ReactDOM.render(
                             <Route      path='/about'           component={About} />
                             <Route      path='/skills'          component={Skills} />
                             <Route      path='/experience'      component={Experience} />
+                            <Route      path='/contact'         component={Contact} />
                             <Route      path='/portfolio/:id'   component={PortfolioItem} />
                             <Redirect   path='/portfolio'       to='/' />
                             <Route      path='/'                component={PortfolioIndex} />                        

@@ -14,7 +14,7 @@ const GigCard = (props) => {
         : '';
 
     // Parse Content
-    const bullets = gig.bullets.map(bullet => <li>{bullet}</li>);
+    const bullets = gig.bullets.map(bullet => <li key={bullet}>{bullet}</li>);
 
     // Parse Tags
     let tagOutput = '';

@@ -99,7 +99,21 @@ body {
     @include transition-primary(transform);
 }
 
-.sidebar--open { transform: none; }
+.sidebar--open { 
+    transform: none;
+
+    // Sidebar shadow thing
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: $sidebar-width + 10px;
+    //     height: 100%;
+    //     z-index: $z-index-sidebar - 1;
+    //     background: $primary;
+    // }
+}
 
 .logo { 
     text-align: center;
@@ -119,7 +133,6 @@ body {
     .menu-item {
         list-style: none;
         color: $white;
-        text-align: center;
         font-variant: small-caps;
         font-size: 1.5rem;
 
@@ -145,6 +158,31 @@ body {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Portfolio
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+.project {
+    @include transition-primary();
+
+    &.not-animated {
+        opacity: 0;
+        transform: translateX(-25px);        
+    }
+
+    .tag {
+        @include transition-primary(background);
+        font-size: 14px;
+        display: inline-block;
+        background: $primary;
+        color: $white;
+        padding: 5px 10px;
+        border-radius: 2px;
+        margin: 0 5px 5px 0;
+        text-decoration: none;
+
+        &:hover {
+            background: $secondary;
+        }
+    }
+}
 
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -176,7 +214,13 @@ body {
 }
 
 .skill {
+    @include transition-primary();
     text-align: center;
+
+    &.not-animated {
+        opacity: 0;
+        transform: translateX(-25px);        
+    }
 
     .card {
         transition:  0.3s ease;
@@ -204,6 +248,15 @@ body {
     h5 { font-weight: 300; }
 
     &.current .gig__end { color: $primary; }
+}
+
+.gig-wrap {
+    @include transition-primary();
+
+    &.not-animated {
+        opacity: 0;
+        transform: translateX(-25px);        
+    }
 }
 
 .gig__dates {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
 import SkillCard from './skill-card';
 import skillsList from '../../assets/data/skills';
@@ -13,6 +12,12 @@ export default class Skills extends Component {
 
         this.state = { filters: [] };
 
+        // Refs
+        skillsList.forEach(skill => {
+            this[skill.name] = React.createRef();
+        });
+
+        //  Methods
         this.renderSkills = this.renderSkills.bind(this);
         this.renderFilters = this.renderFilters.bind(this);
         this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -45,6 +50,8 @@ export default class Skills extends Component {
         }
 
         this.setState({ filters: currentFilters });
+
+        this.animateSkills = this.animateSkills.bind(this);
     }
 
     renderSkills() {
@@ -64,7 +71,40 @@ export default class Skills extends Component {
             });
         }
 
-        return skills.map(skill =>  <SkillCard skill={skill} key={skill.name} />);
+        return skills.map(skill =>  {
+            return (
+                <div className="col-6 col-md-4 col-lg-3 mb-4"  key={skill.name}>
+                    <div className="skill not-animated" ref={skill.name}>
+                        <SkillCard skill={skill} />
+                    </div>
+                </div>
+            );
+        });
+    }
+
+    // TODO - refactor this
+    animateSkills() {
+        let {filters} = this.state;
+
+        let skills = skillsList.sort((a, b) => {
+                return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+        });
+        
+        if (filters.length) {
+            skills = skills.filter(skill => {
+                return _.intersection(skill.tags, filters).length > 0;
+            });
+        }
+
+        let index = 0;
+        let animationLoop = setInterval(() => {
+
+            this.refs[skills[index].name].classList.remove('not-animated');
+
+            index++;
+            if (index === skills.length) clearInterval(animationLoop);
+
+        }, 50);
     }
 
     render() {
@@ -73,17 +113,21 @@ export default class Skills extends Component {
                 <div className="row filters">
                     { this.renderFilters() }
                 </div>
-                <ReactCSSTransitionGroup
-                    className="row skills"
-                    transitionName="card"
-                    transitionAppear={true}                    
-                    transitionAppearTimeout={300}
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}>
-                        { this.renderSkills() }
-                </ReactCSSTransitionGroup>
+                <div className="row skills">
+                    { this.renderSkills() }
+                </div>                        
             </div>
         );
+    }
+
+    componentDidMount() {
+        // Animate those puppies in
+        this.animateSkills();
+    }
+    
+    componentDidUpdate() {
+        // Animate those puppies back in
+        this.animateSkills();
     }
     
 }
