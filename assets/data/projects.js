@@ -29,6 +29,20 @@ const projects = [
         gallery: [
             '../../assets/img/projects/merchhouse/dashboard.png'
         ]
+    },
+    {
+        title: 'ONYX Slider',
+        description: 'Customizable Shopify image slider that can be dropped in to any theme using Shopify\'s grid system. Includes a multidude of options for configuring design, functonality, and responsiveness.',
+        bullets: [
+    
+        ],
+        tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
+        code: '',
+        link: '',
+        imgSrc: '../../assets/img/projects/onyx_slider/slider.jpg',
+        gallery: [
+            '../../assets/img/projects/onyx_slider/slider.png'
+        ]
     }
 ];
 

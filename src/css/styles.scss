@@ -82,6 +82,25 @@ body {
     transition: opacity 300ms ease-in;
 }
 
+// -=-=- Tags -=-=-
+
+.tag {
+    @include transition-primary(background);
+    font-size: 14px;
+    display: inline-block;
+    background: $primary;
+    color: $white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin: 0 5px 5px 0;
+    text-decoration: none;
+
+    &:hover {
+        background: $secondary;
+        color: $white;
+        text-decoration: none;
+    }
+}
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Sidebar
@@ -166,21 +185,21 @@ body {
         opacity: 0;
         transform: translateX(-25px);        
     }
+}
 
-    .tag {
-        @include transition-primary(background);
-        font-size: 14px;
-        display: inline-block;
-        background: $primary;
-        color: $white;
-        padding: 5px 10px;
-        border-radius: 2px;
-        margin: 0 5px 5px 0;
-        text-decoration: none;
+.card-img-top {
+    position: relative;
 
-        &:hover {
-            background: $secondary;
-        }
+    &::after {
+        @include transition-primary(opacity);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0.3;
     }
 }
 

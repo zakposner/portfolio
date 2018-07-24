@@ -3,26 +3,34 @@ import { Link } from 'react-router-dom';
 import ProjectCard from './project-card';
 import projectsList from '../../assets/data/projects';
 
+function getActiveTag(props) {
+    let tag = !props.location.search.length
+        ? ''
+        : props.location.search
+            .replace('?', '')
+            .split('&')
+            .filter(term => term.indexOf('tag') > -1)[0]
+            .replace('tag=', '');
+
+    return decodeURI(tag);
+}
+
+function getFilteredProjects(tag) {
+    return !tag.length
+        ? projectsList
+        : projectsList.filter(project => project.tags.indexOf(tag) > -1);
+}
+
 export default class PortfolioIndex extends Component {
 
     constructor(props) {
         super(props);
 
         // Parse active tag if available
-        let tag = !props.location.search.length
-            ? ''
-            : props.location.search
-                .replace('?', '')
-                .split('&')
-                .filter(term => term.indexOf('tag') > -1)[0]
-                .replace('tag=', '');
-
-        tag = decodeURI(tag);
+        let tag = getActiveTag(props);
 
         // Apply tag as a filter to the projects list, if there is one
-        let projects = !tag.length
-            ? projectsList
-            : projectsList.filter(project => project.tags.indexOf(tag) > -1);
+        let projects = getFilteredProjects(tag);
 
         // Refs for animating in the projects
         projects.forEach(project => this[project.title] = React.createRef());
@@ -34,6 +42,17 @@ export default class PortfolioIndex extends Component {
 
         this.renderUnfilter = this.renderUnfilter.bind(this);
         this.renderProjects = this.renderProjects.bind(this);
+        this.animateProjects = this.animateProjects.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        let tag = getActiveTag(nextProps);
+        let projects = getFilteredProjects(tag);
+
+        this.setState({
+            tag,
+            projects
+        })
     }
 
     // Only runs when there query string contains 'tag'
@@ -66,6 +85,21 @@ export default class PortfolioIndex extends Component {
         });
     }
 
+    animateProjects() {
+        // animate those puppies
+        const {projects} = this.state;
+
+        let index = 0;
+        let animationLoop = setInterval(() => {
+
+            this.refs[projects[index].title].classList.remove('not-animated');
+
+            index++;
+            if (index === projects.length) clearInterval(animationLoop);
+
+        }, 150);
+    }
+
     render() {
         return (
             <div>
@@ -79,17 +113,12 @@ export default class PortfolioIndex extends Component {
 
 
     componentDidMount() {
-        // animate those puppies
-        const {projects} = this.state;
+        // animate those puppies in
+        this.animateProjects();
+    }
 
-        let index = 0;
-        let animationLoop = setInterval(() => {
-
-            this.refs[projects[index].title].classList.remove('not-animated');
-
-            index++;
-            if (index === projects.length) clearInterval(animationLoop);
-
-        }, 150);
+    componentDidUpdate() {
+        // animate those puppies back in
+        this.animateProjects();
     }
 }
