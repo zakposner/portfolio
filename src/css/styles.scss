@@ -20,6 +20,9 @@ $phone                                      : 'max-width: 491px';
     transition: $prop .3s ease-in-out; 
 }
 
+// -=-=- Typography -=-=-
+$tag-font-size                              : 14px;
+
 // -=-=- Spacing -=-=-
 $container-spacing                          : 3rem;
 
@@ -39,6 +42,7 @@ $sidebar-color                              : $white;
 
 body { 
     background-color: $body-bg; 
+    font-family: 'Karla', sans-serif;
 
     // Scrollbar
     &::-webkit-scrollbar {
@@ -86,20 +90,26 @@ body {
 
 .tag {
     @include transition-primary(background);
-    font-size: 14px;
+    font-size: $tag-font-size;
     display: inline-block;
-    background: $primary;
-    color: $white;
-    padding: 5px 10px;
+    border: 1px solid $gray-500;
+    color: $gray-600;
+    padding: 2px 10px;
     border-radius: 2px;
-    margin: 0 5px 5px 0;
+    margin: 0 0.25em 0.25em 0;
     text-decoration: none;
 
     &:hover {
-        background: $secondary;
+        background: $primary;
         color: $white;
+        border: 1px solid $primary;
         text-decoration: none;
     }
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -116,22 +126,52 @@ body {
 
     transform: translateX(-$sidebar-width);
     @include transition-primary(transform);
+
+    .content__wrap-inner {
+        padding-left: 10px;
+    }
+
+    .menu {
+        padding-left: 0;
+    
+        a { text-decoration: none; }
+    
+        .menu-item {
+            list-style: none;
+            color: $white;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+    
+            &--active { color: $primary; }
+    
+            &:hover { text-shadow: 0 0 0.2em rgba(255,255,255,0.5); }
+        }
+    }
+
+    h2,
+    h5,
+    p,
+    hr { color: $white; }
+
+    .status-label { margin-right: 5px; }
+
+    .status {
+        padding: 2px 10px;
+        font-size: $tag-font-size;
+        display: inline-block;
+
+        &.status--employed {
+            background: $primary;
+        }
+
+        &.status--looking {
+            background: $warning;
+        }
+    }
 }
 
 .sidebar--open { 
     transform: none;
-
-    // Sidebar shadow thing
-    // &::after {
-    //     content: '';
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: $sidebar-width + 10px;
-    //     height: 100%;
-    //     z-index: $z-index-sidebar - 1;
-    //     background: $primary;
-    // }
 }
 
 .logo { 
@@ -141,21 +181,6 @@ body {
     img {
         width:200px;
         border-radius: 50%;
-    }
-}
-
-.sidebar .menu {
-    padding-left: 0;
-
-    a { text-decoration: none; }
-
-    .menu-item {
-        list-style: none;
-        color: $white;
-        font-variant: small-caps;
-        font-size: 1.5rem;
-
-        &--active { color: $primary; }
     }
 }
 
@@ -185,6 +210,12 @@ body {
         opacity: 0;
         transform: translateX(-25px);        
     }
+
+    h5 { font-weight: 300; }
+
+    .card-footer {
+        padding: 0.75em 1.25em 0.5em;
+    }
 }
 
 .card-img-top {
@@ -201,6 +232,11 @@ body {
         background: #000;
         opacity: 0.3;
     }
+}
+
+.project__bullets {
+    padding: 0 1rem 0 2rem;
+    margin-bottom: 3rem;
 }
 
 

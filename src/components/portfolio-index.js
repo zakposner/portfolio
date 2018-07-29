@@ -42,6 +42,7 @@ export default class PortfolioIndex extends Component {
 
         this.renderUnfilter = this.renderUnfilter.bind(this);
         this.renderProjects = this.renderProjects.bind(this);
+        this.renderProjectColumns = this.renderProjectColumns.bind(this);
         this.animateProjects = this.animateProjects.bind(this);
     }
 
@@ -71,12 +72,24 @@ export default class PortfolioIndex extends Component {
         )
     }
 
-    renderProjects() {
-        const {projects} = this.state;
+    renderProjects(segment) {
+        let {projects} = this.state;
+
+        // TODO: refactor this into something more clever
+        if (segment === 'even') {
+            projects = projects.filter((project, i) => {
+                return i % 2 === 0;
+            });
+        }
+        else if (segment === 'odd') {
+            projects = projects.filter((project, i) => {
+                return i % 2 === 1;
+            });
+        }
 
         return projects.map(project => {
             return (
-                <div className="col col-md-6" key={project.title}>
+                <div key={project.title}>
                     <div className="project not-animated" ref={project.title}>
                         <ProjectCard project={project} />
                     </div>
@@ -85,17 +98,38 @@ export default class PortfolioIndex extends Component {
         });
     }
 
+    renderProjectColumns() {
+        if ( window.innerWidth > 1000 ) {
+            return (
+                <div className="row">
+                    <div className="col col-md-6">
+                        {this.renderProjects('even')}
+                    </div>
+                    <div className="col col-md-6">
+                        {this.renderProjects('odd')}
+                    </div>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className="row">
+                    {this.renderProjects()}
+                </div>
+            );
+        }
+    }
+
     animateProjects() {
-        // animate those puppies
         const {projects} = this.state;
 
         let index = 0;
-        let animationLoop = setInterval(() => {
+        this.animationLoop = setInterval(() => {
 
             this.refs[projects[index].title].classList.remove('not-animated');
 
             index++;
-            if (index === projects.length) clearInterval(animationLoop);
+            if (index === projects.length) clearInterval(this.animationLoop);
 
         }, 150);
     }
@@ -104,8 +138,8 @@ export default class PortfolioIndex extends Component {
         return (
             <div>
                 { this.props.location.search.indexOf('tag') > -1 && this.renderUnfilter() }
-                <div className="row projects">
-                    {this.renderProjects()}
+                <div className="projects">
+                    {this.renderProjectColumns()}
                 </div>
             </div>
         );
@@ -120,5 +154,9 @@ export default class PortfolioIndex extends Component {
     componentDidUpdate() {
         // animate those puppies back in
         this.animateProjects();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.animationLoop);
     }
 }

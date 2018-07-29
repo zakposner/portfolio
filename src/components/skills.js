@@ -97,12 +97,12 @@ export default class Skills extends Component {
         }
 
         let index = 0;
-        let animationLoop = setInterval(() => {
+        this.animationLoop = setInterval(() => {
 
             this.refs[skills[index].name].classList.remove('not-animated');
 
             index++;
-            if (index === skills.length) clearInterval(animationLoop);
+            if (index === skills.length) clearInterval(this.animationLoop);
 
         }, 50);
     }
@@ -110,6 +110,7 @@ export default class Skills extends Component {
     render() {
         return (
             <div>
+                <h1 className="page-title">Skills</h1>
                 <div className="row filters">
                     { this.renderFilters() }
                 </div>
@@ -129,5 +130,8 @@ export default class Skills extends Component {
         // Animate those puppies back in
         this.animateSkills();
     }
-    
+
+    componentWillUnmount() {
+        clearInterval(this.animationLoop);
+    }    
 }

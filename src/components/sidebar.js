@@ -14,7 +14,10 @@ export default class Sidebar extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { openClass: '' }
+        this.state = { 
+            openClass: '',
+            status: 'employed'
+        }
     }
 
     renderMenu() {
@@ -47,19 +50,32 @@ export default class Sidebar extends Component {
     }
 
     render() {
-        //const logoSrc = 'https://vignette.wikia.nocookie.net/kingofthehill/images/1/1e/Gary_Busey.jpg/revision/latest?cb=20130527084456';
+        const logoSrc = 'https://vignette.wikia.nocookie.net/kingofthehill/images/1/1e/Gary_Busey.jpg/revision/latest?cb=20130527084456';
+
+        const {status} = this.state;
+        const statusBadge = <span className={`status status--${status}`}>{status}</span>
 
         return (
             <div className={'sidebar ' + this.state.openClass}>
-                <div className="content-wrap">
+                <div className="content__wrap">
+                
                     <div className="logo">
-                        {/* <img src={logoSrc} alt="A photo of me, Zak Posner." title="It's a me."/> */}
+                        <img src={logoSrc} alt="A photo of me, Zak Posner." title="It's a me."/>
                     </div>
-                    <div className="menu__wrap">
+
+                    <div className="content__wrap-inner">
+                        <h2>Zak Posner</h2>
+                        <h5>Front End Developer</h5>
+                        <p>
+                            <span className="status-label">Status:</span> {statusBadge}
+                        </p>
+                        <hr />
+
                         <ul className="menu">
                             {this.renderMenu()}
                         </ul>
-                    </div>
+                    </div>                    
+
                 </div>
                 <div className="sidebar-toggle">X</div>
             </div>

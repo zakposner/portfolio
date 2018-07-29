@@ -25,8 +25,11 @@ export default class Experience extends Component {
 
     render() {
         return (
-            <div className="gigs">
-                { this.renderGigs() }
+            <div>
+                <h1 className="page-title">Experience</h1>
+                <div className="gigs">
+                    { this.renderGigs() }
+                </div>
             </div>
         );
     }
@@ -34,13 +37,17 @@ export default class Experience extends Component {
     componentDidMount() {
         // Animate those puppies in
         let index = 0;
-        let animationLoop = setInterval(() => {
+        this.animationLoop = setInterval(() => {
 
             this.refs[gigs[index].company].classList.remove('not-animated');
 
             index++;
-            if (index === gigs.length) clearInterval(animationLoop);
+            if (index === gigs.length) clearInterval(this.animationLoop);
 
         }, 150);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.animationLoop);
     }
 }

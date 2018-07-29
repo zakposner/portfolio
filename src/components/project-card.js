@@ -10,7 +10,7 @@ const ProjectCard = (props) => {
     );
 
     let bullets = (
-        <ul>
+        <ul className="project__bullets">
             {project.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}
         </ul>
     );
@@ -25,11 +25,19 @@ const ProjectCard = (props) => {
         <div className="card shadow-sm mb-4">
             {project.imgSrc.length && image}
             <div className="card-body">
+
                 <h2>{project.title}</h2>
+                <h5>Role: {project.role}</h5>
+                <hr />
+
                 <p>{project.description}</p>
-                <ul>
-                    {bullets}
-                </ul>
+                {bullets}
+
+                <div className="btn-group">
+                    {project.link.length > 0 && <button className="btn btn-primary">View Live</button>}
+                    {project.code.length > 0 && <button className="btn btn-secondary">View Code</button>}
+                </div>
+                
             </div>
             {project.tags.length && tags}
         </div>
