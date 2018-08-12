@@ -35,6 +35,12 @@ $sidebar-padding                            : 20px;
 $sidebar-background                         : #343a40;
 $sidebar-color                              : $white;
 
+$nav-font-size                              : 1.5rem;
+$nav-line-height                            : 36px;
+$nav-vert-space                             : 0.65rem;
+$hover-bar-width                            : 4px;
+$hover-bar-offset                           : $nav-line-height; // $nav-font-size + $nav-vert-space;
+
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  General
@@ -112,6 +118,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.page-not-found img {
+    max-width: 500px;
+}
+
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Sidebar
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -121,6 +131,7 @@ body {
     padding: $sidebar-padding;
     height: 100%;
     position: fixed;
+    // overflow-y: scroll;
     z-index: $z-index-sidebar;
     background: $sidebar-background;
 
@@ -129,23 +140,6 @@ body {
 
     .content__wrap-inner {
         padding-left: 10px;
-    }
-
-    .menu {
-        padding-left: 0;
-    
-        a { text-decoration: none; }
-    
-        .menu-item {
-            list-style: none;
-            color: $white;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-    
-            &--active { color: $primary; }
-    
-            &:hover { text-shadow: 0 0 0.2em rgba(255,255,255,0.5); }
-        }
     }
 
     h2,
@@ -168,6 +162,24 @@ body {
             background: $warning;
         }
     }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: rgba(0,0,0,0);
+        -webkit-border-radius: 100px;
+    }
+    &::-webkit-scrollbar:hover {
+        background-color: rgba(0, 0, 0, 0.09);
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb:vertical {
+        background: rgba(0,0,0,0.5);
+        -webkit-border-radius: 100px;
+    }
+    &::-webkit-scrollbar-thumb:vertical:active {
+        background: rgba(0,0,0,0.61);
+        -webkit-border-radius: 100px;
+    }
 }
 
 .sidebar--open { 
@@ -181,6 +193,10 @@ body {
     img {
         width:200px;
         border-radius: 50%;
+    }
+
+    @media screen and (max-width: 1000px) {
+        display: none;
     }
 }
 
@@ -198,6 +214,58 @@ body {
         left: 100%;
     }
 }
+
+.menu {
+    padding-left: 0;
+    position: relative;
+
+    .hover-bar {
+        position: absolute;
+        height: $hover-bar-offset;
+        width: 0;
+        top: 0;
+        left: -$hover-bar-width * 3;
+        background-color: $primary;
+        transition: top 0.5s ease;
+    }
+
+    &:hover .hover-bar {
+        width: $hover-bar-width;
+    }
+
+    .menu-item {
+        list-style: none;
+        font-size: $nav-font-size;
+        letter-spacing: 2px;
+
+        a { 
+            text-decoration: none;
+            color: $white;
+            display: block;
+            height: 100%;
+        }
+
+        svg {
+            height: 1rem;
+            margin-right: 0.5rem;
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        &.menu-item--active {
+
+            a { color: $primary; }
+        }
+
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}):hover ~ .hover-bar {
+                top: $i * $hover-bar-offset - $hover-bar-offset;
+            }
+        }
+    }
+}
+
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Portfolio
@@ -257,7 +325,6 @@ body {
 .filter {
     font-weight: $font-weight-bold;
     font-size: 1.25rem;
-    font-variant: small-caps;
 
     .pretty input:checked~.state.p-success label:after, 
     .pretty.p-toggle .state.p-success label:after { background-color: $primary !important; }

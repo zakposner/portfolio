@@ -135,14 +135,29 @@ export default class PortfolioIndex extends Component {
     }
 
     render() {
-        return (
-            <div>
-                { this.props.location.search.indexOf('tag') > -1 && this.renderUnfilter() }
-                <div className="projects">
-                    {this.renderProjectColumns()}
+        const location = this.props.location.pathname;
+
+        if (location === '/' || location.indexOf('/portfolio') > -1) {
+            return (
+                <div>
+                    <h1 className="page-title">Portfolio</h1>
+                    { this.props.location.search.indexOf('tag') > -1 && this.renderUnfilter() }
+                    <div className="projects">
+                        {this.renderProjectColumns()}
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+
+        // Handle 404 pages here
+        else {
+            return (
+                <div className="container text-center page-not-found">
+                    <h2 className="page-title">404<br/>This page was not meant for you.</h2>
+                    <img src="../../assets/img/404.png" alt=""/>
+                </div>
+            );
+        }
     }
 
 
