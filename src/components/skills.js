@@ -49,6 +49,9 @@ export default class Skills extends Component {
             currentFilters.push(target)
         }
 
+        // Stop current animations
+        if (this.animationLoop) clearInterval(this.animationLoop);
+
         this.setState({ filters: currentFilters });
 
         this.animateSkills = this.animateSkills.bind(this);
