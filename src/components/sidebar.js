@@ -15,9 +15,12 @@ export default class Sidebar extends Component {
         super(props);
 
         this.state = { 
-            openClass: '',
+            open: false,
             status: 'employed'
         }
+
+        this.updateClass = this.updateClass.bind(this);
+        this.handleToggleClick = this.handleToggleClick.bind(this);
     }
 
     renderMenu() {
@@ -29,34 +32,38 @@ export default class Sidebar extends Component {
             // Portfolio is also home page
             if (item.name === 'Portfolio' && window.location.pathname === '/') elemclass = 'menu-item menu-item--active';
 
-            return (
-                <Link to={ item.href } key={ item.name }>
-                    <li className={ elemclass }>
+            return (                
+                <li className={ elemclass } key={ item.name }>
+                    <Link to={ item.href } >
                         { item.name }
-                    </li>
-                </Link>
+                    </Link>
+                </li>                
             );
         });
     }
 
     updateClass() {
-        let openClass = window.innerWidth > 1000 ? 'sidebar--open' : '';
-        this.setState({openClass});
+        this.setState({
+            open:  window.innerWidth > 1000
+        });
     }
 
-    componentDidMount() {
-        this.updateClass();
-        window.addEventListener('resize', this.updateClass.bind(this));
+    handleToggleClick() {
+        this.setState({
+            open: !this.state.open
+        })
     }
 
     render() {
         const logoSrc = 'https://vignette.wikia.nocookie.net/kingofthehill/images/1/1e/Gary_Busey.jpg/revision/latest?cb=20130527084456';
 
+        const openClass = this.state.open ? 'sidebar--open' : ''
+
         const {status} = this.state;
-        const statusBadge = <span className={`status status--${status}`}>{status}</span>
+        const statusBadge = <span className={`status status--${status}`}>{status}</span>;
 
         return (
-            <div className={'sidebar ' + this.state.openClass}>
+            <div className={'sidebar ' + openClass}>
                 <div className="content__wrap">
                 
                     <div className="logo">
@@ -73,12 +80,29 @@ export default class Sidebar extends Component {
 
                         <ul className="menu">
                             {this.renderMenu()}
+                            <li className="menu-item">
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="512px" height="512px" viewBox="0 0 433.5 433.5">
+                                    <g>
+                                        <g id="file-download">
+                                            <path d="M395.25,153h-102V0h-153v153h-102l178.5,178.5L395.25,153z M38.25,382.5v51h357v-51H38.25z" fill="#FFFFFF"/>
+                                        </g>
+                                    </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                    Resume
+                                </a>
+                            </li>
+                            <div className="hover-bar"></div>
                         </ul>
                     </div>                    
 
                 </div>
-                <div className="sidebar-toggle">X</div>
+                <div className="sidebar-toggle" onClick={this.handleToggleClick}>X</div>
             </div>
         )
+    }
+
+    componentDidMount() {
+        this.updateClass();
+        window.addEventListener('resize', this.updateClass.bind(this));
     }
 }
