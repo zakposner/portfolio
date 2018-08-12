@@ -23,6 +23,8 @@ const projects = [
         bullets: [
             'Design and development on a dynamic, interactive dashboard for store admins',
             'Design and styling on an embedded custom t-shirt designer widget',
+            'Implementation of the project build system, utilizing Gulp and Webpack',
+            'Dynamic table generation in PHP'
         ],
         tags: [ 'gulp', 'webpack', 'javascript', 'html', 'css', 'jquery', 'php', 'scss' ],
         code: '',
@@ -45,7 +47,7 @@ const projects = [
         tags: [ 'javascript', 'angular', 'docker', 'grunt', 'html', 'css', 'scss', 'webpack' ],
         code: '',
         link: 'https://ultrapress.com/',
-        imgSrc: '../../assets/img/projects/ultrapress/product_catalog_2.jpg',
+        imgSrc: '../../assets/img/projects/ultrapress/home-page.jpg',
         gallery: [
 
         ]
@@ -56,7 +58,8 @@ const projects = [
         description: 'Custom WordPress site for an investment firm specializing in EB-5',
         bullets: [
             'Custom built full-page navigation experience',
-            'Animated map showing office locations throughout Asia'
+            'Animated map showing office locations throughout Asia',
+            'Theme customization'
         ],
         tags: [ 'javascript', 'jquery', 'html', 'css', 'scss', 'php', 'gulp', 'wordpress' ],
         code: '',
