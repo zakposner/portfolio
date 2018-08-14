@@ -5,42 +5,9 @@
 @import './vendor/bootstrap/functions';
 @import './vendor/bootstrap/variables';
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-//  Variables & Mixins
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-// -=-=- Breakpoints -=-=-
-$desktop                                    : 'min-width: 1001px';
-$mobile                                     : 'max-width: 1000px';
-$tablet-min                                 : 'min-width: 691px';
-$phone                                      : 'max-width: 491px';
-
-// -=-=- Animations -=-=-
-@mixin transition-primary($prop: all) {
-    transition: $prop .3s ease-in-out; 
-}
-
-// -=-=- Typography -=-=-
-$tag-font-size                              : 14px;
-
-// -=-=- Spacing -=-=-
-$container-spacing                          : 3rem;
-
-// -=-=- Z-Index -=-=-
-$z-index-sidebar                            : 9999;
-
-// -=-=- Sidebar -=-=-
-$sidebar-width                              : 300px;
-$sidebar-padding                            : 20px;
-$sidebar-background                         : #343a40;
-$sidebar-color                              : $white;
-
-$nav-font-size                              : 1.5rem;
-$nav-line-height                            : 36px;
-$nav-vert-space                             : 0.65rem;
-$hover-bar-width                            : 4px;
-$hover-bar-offset                           : $nav-line-height; // $nav-font-size + $nav-vert-space;
-
+@import 'mixins';
+@import 'variables';
+@import 'utilities';
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  General
@@ -135,7 +102,7 @@ body {
     z-index: $z-index-sidebar;
     background: $sidebar-background;
 
-    transform: translateX(-$sidebar-width);
+    transform: translate3d(0, 0, 0) translateX(-$sidebar-width);
     @include transition-primary(transform);
 
     .content__wrap-inner {
@@ -183,7 +150,7 @@ body {
 }
 
 .sidebar--open { 
-    transform: none;
+    transform: translate3d(0, 0, 0);
 }
 
 .logo { 
@@ -311,6 +278,18 @@ body {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  About
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+.about {
+    img,
+    .card {
+        @include transition-primary();
+
+        &.not-animated {
+            opacity: 0;
+            transform: translateX(-25px);        
+        }
+    }
+}
 
 .about__upper {
 

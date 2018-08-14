@@ -1,0 +1,30 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//  Variables
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+// -=-=- Breakpoints -=-=-
+$desktop                                    : 'min-width: 1001px';
+$mobile                                     : 'max-width: 1000px';
+$tablet-min                                 : 'min-width: 691px';
+$phone                                      : 'max-width: 491px';
+
+// -=-=- Typography -=-=-
+$tag-font-size                              : 14px;
+
+// -=-=- Spacing -=-=-
+$container-spacing                          : 3rem;
+
+// -=-=- Z-Index -=-=-
+$z-index-sidebar                            : 9999;
+
+// -=-=- Sidebar -=-=-
+$sidebar-width                              : 300px;
+$sidebar-padding                            : 20px;
+$sidebar-background                         : #343a40;
+$sidebar-color                              : $white;
+
+$nav-font-size                              : 1.5rem;
+$nav-line-height                            : 36px;
+$nav-vert-space                             : 0.65rem;
+$hover-bar-width                            : 4px;
+$hover-bar-offset                           : $nav-line-height; // $nav-font-size + $nav-vert-space;
