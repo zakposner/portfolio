@@ -1,6 +1,5 @@
 import React from 'react';
 import Tag from './tag';
-import projects from '../../assets/data/projects';
 
 const ProjectCard = (props) => {
     const {project} = props;
@@ -34,8 +33,8 @@ const ProjectCard = (props) => {
                 {bullets}
 
                 <div className="btn-group">
-                    {project.link.length > 0 && <button className="btn btn-primary">View Live</button>}
-                    {project.code.length > 0 && <button className="btn btn-secondary">View Code</button>}
+                    {project.link.length > 0 && <a target="_blank" href={project.link} className="btn btn-primary">View Live</a>}
+                    {project.code.length > 0 && <a target="_blank" href={project.code} className="btn btn-secondary">View Code</a>}
                 </div>
                 
             </div>

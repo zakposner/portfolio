@@ -14,15 +14,24 @@ export default class About extends Component {
     constructor(props) {
         super(props);
 
+        // Refs
         animations.forEach(animation => this[animation] = React.createRef());
+        this.iframeWrap = React.createRef();
+
+        // Methods
+        this.handleIframeReady = this.handleIframeReady.bind(this);
+    }
+
+    handleIframeReady() {
+        this.refs.iframeWrap.classList.remove('loading');
     }
 
     render() {
 
         // Images
         const heroImg = {
-            src: 'https://vignette.wikia.nocookie.net/kingofthehill/images/1/1e/Gary_Busey.jpg/revision/latest?cb=20130527084456',
-            alt: ''
+            src: '../../assets/img/about-img.jpg',
+            alt: 'Me on a friggen boat.'
         }
 
         const beerOfTheMonth = {
@@ -39,10 +48,18 @@ export default class About extends Component {
                     <div className="row">
                         <div className="col-md-4">
                             <img className="shadow-sm mb-4 not-animated" src={heroImg.src} alt={heroImg.alt} ref="hero" />
-                            <div className="card shadow-sm not-animated" ref="tunes">
+                            <div className="card shadow-sm mb-4not-animated" ref="tunes">
                                 <div className="card-body">
                                     <h4 className="mb-3">Tunes of the Month</h4>
-                                    <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/371567003&color=%2300463e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                    <div className="iframe-wrap loading" ref="iframeWrap">
+                                        <iframe width="100%" 
+                                                height="150" 
+                                                scrolling="no" 
+                                                frameBorder="no" 
+                                                onLoad={this.handleIframeReady}
+                                                allow="autoplay" 
+                                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/371567003&color=%2300463e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +77,7 @@ export default class About extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <div className="card shadow-sm not-animated" ref="beer">
+                                    <div className="card shadow-sm not-animated mb-4" ref="beer">
                                         <div className="card-body beer">
                                             <h4 className="mb-3">Beer of the Month</h4>
                                             <a href={beerOfTheMonth.href}>
@@ -70,7 +87,7 @@ export default class About extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-6">
-                                    <div className="card shadow-sm not-animated" ref="project">
+                                    <div className="card shadow-sm not-animated mb-4" ref="project">
                                         <div className="card-body current-project">
                                             <h4 className="mb-3">Current Side Project</h4>
                                             <h5>Title: TBA</h5>

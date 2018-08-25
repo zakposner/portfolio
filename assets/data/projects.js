@@ -17,6 +17,23 @@ const model =
 
 const projects = [
     {
+        title: 'Slate Theme Wrap',
+        role: 'Developer',
+        description: 'A smart build system for customizing slate themes.',
+        bullets: [
+            'Allows the core theme files to be maintained and tracked seperately as a submodule',
+            'Easy project-specific theme overrides and additions',
+            'Only recompiles the files you edit, and only if they are calculated to be in the final build'
+        ],
+        tags: [ 'gulp', 'javascript' ],
+        code: 'https://github.com/zakposner/slate-theme-wrap',
+        link: '',
+        imgSrc: '../../assets/img/projects/slate-theme-wrap/screenshot.jpg',
+        gallery: [
+
+        ]
+    },
+    {
         title: 'MerchHouse',
         role: 'Front End Developer',
         description: 'Merch House is a T-shirt marketplace for Greek organizations and social clubs.',
@@ -74,7 +91,9 @@ const projects = [
         role: 'Creator',
         description: 'Customizable Shopify image slider that can be dropped in to any theme using Shopify\'s grid system. Includes a multidude of options for configuring design, functonality, and responsiveness.',
         bullets: [
-    
+            'Numerous methods for the end user to customize content display and position',
+            'Advanced slider height and responsiveness settings',
+            'Compatible with Shopify Dynamic Sections'
         ],
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: '',
@@ -89,7 +108,8 @@ const projects = [
         role: 'Front End Developer',
         description: 'Custom JS and page templates for running advanced Product Page image galleries',
         bullets: [
-    
+            'Options to link product image slideshow to variant images',
+            ''
         ],
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: 'https://github.com/zakposner/Product-Gallery',
@@ -104,7 +124,8 @@ const projects = [
         role: 'Front End Developer',
         description: 'A highly customizable and extensible row system for building Shopify storefronts',
         bullets: [
-    
+            'Highly customizable content positioning',
+            'Compatible with any slate-derived Shopify theme'
         ],
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: 'https://github.com/zakposner/content-row',

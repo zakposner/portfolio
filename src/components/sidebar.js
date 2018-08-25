@@ -55,12 +55,21 @@ export default class Sidebar extends Component {
     }
 
     render() {
-        const logoSrc = 'https://vignette.wikia.nocookie.net/kingofthehill/images/1/1e/Gary_Busey.jpg/revision/latest?cb=20130527084456';
+        // It's a me
+        const logoSrc = '../../assets/img/me.jpg';
 
+        // Container Class
         const openClass = this.state.open ? 'sidebar--open' : ''
 
+        // Status Badge
         const {status} = this.state;
         const statusBadge = <span className={`status status--${status}`}>{status}</span>;
+
+        /// Menu Toggle classes
+        let toggleClasses = 'hamburger hamburger--collapse sidebar-toggle';
+        if (this.state.open) {
+            toggleClasses += ' is-active';
+        }
 
         return (
             <div className={'sidebar ' + openClass}>
@@ -81,7 +90,7 @@ export default class Sidebar extends Component {
                         <ul className="menu">
                             {this.renderMenu()}
                             <li className="menu-item">
-                                <a href="#">
+                                <a href="../../assets/zak_posner_resume_2018.pdf" download>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="512px" height="512px" viewBox="0 0 433.5 433.5">
                                         <path d="M395.25,153h-102V0h-153v153h-102l178.5,178.5L395.25,153z M38.25,382.5v51h357v-51H38.25z" fill="#FFFFFF"/>
                                     </svg>
@@ -93,7 +102,11 @@ export default class Sidebar extends Component {
                     </div>                    
 
                 </div>
-                <div className="sidebar-toggle" onClick={this.handleToggleClick}>X</div>
+                <button className={toggleClasses} type="button" onClick={this.handleToggleClick}>
+                    <span className="hamburger-box">
+                        <span className="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ProjectCard from './project-card';
 import projectsList from '../../assets/data/projects';
+import Page404 from './404';
 
 function getActiveTag(props) {
     let tag = !props.location.search.length
@@ -152,10 +153,7 @@ export default class PortfolioIndex extends Component {
         // Handle 404 pages here
         else {
             return (
-                <div className="container text-center page-not-found">
-                    <h2 className="page-title">404<br/>This page was not meant for you.</h2>
-                    <img src="../../assets/img/404.png" alt=""/>
-                </div>
+                <Page404 />
             );
         }
     }

@@ -9,7 +9,7 @@ const gigs = [
         description: '',
         bullets: [
             'Design and development for a wide range of range of client sites, with an emphasis in ecommerce',
-            'Responsible for creating the build system for every project using Gulp ad Webpack',
+            'Responsible for creating the build system for every project using Gulp and Webpack',
             'Ground-up design and development of a highly customized Shopify theme, used for all the agency\'s Shopify clients',
             'Front End Development on a large scale custom t-shirt marketplace for fraternities and social organizations'
         ],

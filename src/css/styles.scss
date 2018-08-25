@@ -89,6 +89,25 @@ body {
     max-width: 500px;
 }
 
+img,
+.card {
+    @include transition-primary();
+
+    &.not-animated {
+        opacity: 0;
+        transform: translateX(-25px);        
+    }
+}
+
+// -=-=- Loading Icons -=-=-
+
+.iframe-wrap {
+
+    &.loading {
+        background:url('../../assets/img/loading.gif') center center no-repeat;
+    }
+}
+
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //  Sidebar
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -98,7 +117,6 @@ body {
     padding: $sidebar-padding;
     height: 100%;
     position: fixed;
-    // overflow-y: scroll;
     z-index: $z-index-sidebar;
     background: $sidebar-background;
 
@@ -158,7 +176,7 @@ body {
     padding: 40px 0;
 
     img {
-        width:200px;
+        width:150px;
         border-radius: 50%;
     }
 
@@ -279,18 +297,6 @@ body {
 //  About
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-.about {
-    img,
-    .card {
-        @include transition-primary();
-
-        &.not-animated {
-            opacity: 0;
-            transform: translateX(-25px);        
-        }
-    }
-}
-
 .about__upper {
 
     img {
@@ -356,6 +362,8 @@ body {
     h5 { font-weight: 300; }
 
     &.current .gig__end { color: $primary; }
+
+    .card-header  { background: #fff; }
 }
 
 .gig-wrap {
