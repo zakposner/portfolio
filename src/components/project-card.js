@@ -1,11 +1,15 @@
+const path = require('path');
+
 import React from 'react';
 import Tag from './tag';
 
 const ProjectCard = (props) => {
     const {project} = props;
 
+    const imgSrc = path.resolve(__dirname, '../assets/img/projects/', project.imgSrc );
+
     let image = (
-        <img className="card-img-top" src={project.imgSrc} />
+        <img className="card-img-top" src={imgSrc} />
     );
 
     let bullets = (

@@ -21,6 +21,7 @@ export default class Sidebar extends Component {
 
         this.updateClass = this.updateClass.bind(this);
         this.handleToggleClick = this.handleToggleClick.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
     }
 
     renderMenu() {
@@ -42,16 +43,18 @@ export default class Sidebar extends Component {
         });
     }
 
+    // Sidebar Class Methods
+
     updateClass() {
-        this.setState({
-            open:  window.innerWidth > 1000
-        });
+        this.setState({ open:  window.innerWidth > 1000 });
     }
 
     handleToggleClick() {
-        this.setState({
-            open: !this.state.open
-        })
+        this.setState({ open: !this.state.open })
+    }
+
+    closeMenu() {
+        this.setState({ open: false })
     }
 
     render() {

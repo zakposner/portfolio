@@ -115,7 +115,9 @@ export default class PortfolioIndex extends Component {
         else {
             return (
                 <div className="row">
-                    {this.renderProjects()}
+                    <div className="col">
+                        {this.renderProjects()}
+                    </div>
                 </div>
             );
         }

@@ -28,7 +28,7 @@ const projects = [
         tags: [ 'gulp', 'javascript' ],
         code: 'https://github.com/zakposner/slate-theme-wrap',
         link: '',
-        imgSrc: '../../assets/img/projects/slate-theme-wrap/screenshot.jpg',
+        imgSrc: 'slate-theme-wrap/screenshot.JPG',
         gallery: [
 
         ]
@@ -46,7 +46,7 @@ const projects = [
         tags: [ 'gulp', 'webpack', 'javascript', 'html', 'css', 'jquery', 'php', 'scss' ],
         code: '',
         link: 'https://merch.house/',
-        imgSrc: '../../assets/img/projects/merchhouse/dashboard.png',
+        imgSrc: 'merchhouse/dashboard.PNG',
         gallery: [
 
         ]
@@ -64,7 +64,7 @@ const projects = [
         tags: [ 'javascript', 'angular', 'docker', 'grunt', 'html', 'css', 'scss', 'webpack' ],
         code: '',
         link: 'https://ultrapress.com/',
-        imgSrc: '../../assets/img/projects/ultrapress/home-page.jpg',
+        imgSrc: 'ultrapress/home-page.jpg',
         gallery: [
 
         ]
@@ -81,14 +81,14 @@ const projects = [
         tags: [ 'javascript', 'jquery', 'html', 'css', 'scss', 'php', 'gulp', 'wordpress' ],
         code: '',
         link: 'https://8thbridgecap.com/',
-        imgSrc: '../../assets/img/projects/8bc/nav.jpg',
+        imgSrc: '8bc/nav.JPG',
         gallery: [
 
         ]
     },
     {
         title: 'ONYX Slider',
-        role: 'Creator',
+        role: 'Developer',
         description: 'Customizable Shopify image slider that can be dropped in to any theme using Shopify\'s grid system. Includes a multidude of options for configuring design, functonality, and responsiveness.',
         bullets: [
             'Numerous methods for the end user to customize content display and position',
@@ -98,7 +98,7 @@ const projects = [
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: '',
         link: 'https://sickysworld.com/',
-        imgSrc: '../../assets/img/projects/onyx_slider/slider.jpg',
+        imgSrc: 'onyx_slider/slider.JPG',
         gallery: [
 
         ]
@@ -108,13 +108,13 @@ const projects = [
         role: 'Front End Developer',
         description: 'Custom JS and page templates for running advanced Product Page image galleries',
         bullets: [
-            'Options to link product image slideshow to variant images',
-            ''
+            'Mobile responsive image galleries',
+            'Options to hot reload product image galleries based on selected variant'
         ],
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: 'https://github.com/zakposner/Product-Gallery',
         link: 'https://sickysworld.com/collections/womens/products/off-road-matte-black',
-        imgSrc: '../../assets/img/projects/gallery/sicky.jpg',
+        imgSrc: 'gallery/sicky.JPG',
         gallery: [
 
         ]
@@ -130,26 +130,26 @@ const projects = [
         tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
         code: 'https://github.com/zakposner/content-row',
         link: '',
-        imgSrc: '../../assets/img/projects/content_row/customizer.jpg',
+        imgSrc: 'content_row/customizer.JPG',
         gallery: [
 
         ]
     },
-    // {
-    //     title: 'LivHOME Site',
-    //     role: 'Lead Developer',
-    //     description: 'A highly customizable and extensible row system for building Shopify storefronts',
-    //     bullets: [
+    {
+        title: 'LivHOME Site',
+        role: 'Developer / Web Consultant',
+        description: 'LivHOME specializes in home care solutions and recieves most of their leads through their website.',
+        bullets: [
     
-    //     ],
-    //     tags: [ 'javascript', 'html', 'css', 'scss', 'liquid' ],
-    //     code: 'https://github.com/zakposner/content-row',
-    //     link: '',
-    //     imgSrc: '../../assets/img/projects/content_row/customizer.jpg',
-    //     gallery: [
+        ],
+        tags: [ 'javascript', 'html', 'css', 'scss', 'wordpress', 'gulp' ],
+        code: '',
+        link: 'https://www.livhome.com/',
+        imgSrc: 'livhome/home.JPG',
+        gallery: [
 
-    //     ]
-    // }
+        ]
+    }
 ];
 
 export default projects;

@@ -80,7 +80,7 @@ const skillsList = [
     {
         name: 'Firebase',
         class: 'database',
-        tags: ['tools', 'portfolio']
+        tags: ['tools']
     },
     {
         name: 'Webpack',
@@ -95,9 +95,39 @@ const skillsList = [
     {
         name: 'AWS',
         class: 'code',
+        tags: ['tools']
+    },
+    {
+        name: 'NPM',
+        class: 'npm',
         tags: ['tools', 'portfolio']
-    }
+    },
+    {
+        name: 'Photoshop',
+        class: 'code',
+        tags: ['tools', 'portfolio']
+    },
+    {
+        name: 'Mailchimp',
+        class: 'mailchimp',
+        tags: ['tools']
+    },
     // Platforms
+    {
+        name: 'WordPress',
+        class: 'wordpress',
+        tags: ['platforms']
+    },
+    {
+        name: 'Shopify',
+        class: 'code',
+        tags: ['platforms']
+    },
+    {
+        name: 'Google Suite',
+        class: 'google_drive',
+        tags: ['platforms']
+    }
     // {
     //     name: '',
     //     class: '',

@@ -48,7 +48,7 @@ export default class About extends Component {
                     <div className="row">
                         <div className="col-md-4">
                             <img className="shadow-sm mb-4 not-animated" src={heroImg.src} alt={heroImg.alt} ref="hero" />
-                            <div className="card shadow-sm mb-4not-animated" ref="tunes">
+                            <div className="card shadow-sm mb-4 not-animated" ref="tunes">
                                 <div className="card-body">
                                     <h4 className="mb-3">Tunes of the Month</h4>
                                     <div className="iframe-wrap loading" ref="iframeWrap">
